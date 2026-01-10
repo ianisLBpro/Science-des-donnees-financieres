@@ -1,53 +1,69 @@
 #
+#
 # Test du tracé 3D statiques avec Matplotlib
 #
 #
-import matplotlib as mpl
-import matplotlib.pyplot as plt
-import seaborn as sns
-import numpy as np 
-from mpl_toolkits.mplot3d import Axes3D # Import 3D
+#
 
-# Affiche la version de Matplotlib
-print(mpl.__version__)
-
-# Mise en place du fond et des axes #
-sns.set_style("whitegrid")              # Style avec grille blanche
-mpl.rcParams['font.family'] = 'serif'   # Police avec empattements
-
-np.random.seed(1000)                    # Pour la reproductibilité
-y = np.random.standard_normal(20)       # Données aléatoires
-x = np.arange(len(y))                   # Abscisses
+### Importation des bibliothèques nécessaires ###
+import matplotlib as mpl                                                 # Matplotilib pour les tracés 3D
+import matplotlib.pyplot as plt                                          # Module pyplot de Matplotlib
+import seaborn as sns                                                    # Seaborn pour le style des graphiques
+import numpy as np                                                       # NumPy pour les calculs numériques
+from mpl_toolkits.mplot3d import Axes3D                                  # Import 3D de Matplotlib 
 
 
 
-# Tracé 3D de surface #
-strike = np.linspace(50, 150, 24)                   # Strike de 50 à 150
-ttm = np.linspace(0.5, 2.5, 24)                     # Maturité de 0.5 à 2.5 ans
-strike, ttm = np.meshgrid(strike, ttm)              # Grilles de strike et ttm
-print(strike[:2].round(1))                          # Affiche un extrait de la grille strike
-
-iv = (strike - 100) ** 2 / (100 * strike) / ttm     # Calcul de la volatilité implicite
-print(iv[:5, :3])                                   # Affiche un extrait de la matrice iv
-
-fig = plt.figure(figsize=(10, 6))                   # Taille de la figure
-ax = fig.add_subplot(111, projection='3d')          # Ajout d'un subplot 3D
-surf = ax.plot_surface(strike, 
-                       ttm, 
-                       iv, 
-                       rstride=2, 
-                       cstride=2, 
-                       cmap=plt.cm.coolwarm, 
-                       linewidth=0.5, 
-                       antialiased=True)            # Tracé de la surface
-
-ax.set_xlabel('strike')                             # Label axe x
-ax.set_ylabel('time to maturity')                   # Label axe y
-ax.set_zlabel('implied volatility')                 # Label axe z
-fig.colorbar(surf, shrink=0.5, aspect=5)            # Barre de couleur
-plt.title('Volatilité implicite en 3D')             # Titre du graphique
-plt.show()                                          # Affiche le graphique
+### Configuration du style des tracés ###
+sns.set_style("whitegrid")                                               # Style avec grille blanche
+mpl.rcParams['font.family'] = 'serif'                                    # Police avec empattements
 
 
-# Tracé 3D avec un autre angle de vue #
+### Données aléatoires pour les exemples 3D ###
+np.random.seed(1000)                                                     # Pour la reproductibilité
+y = np.random.standard_normal(20)                                        # Données aléatoires
+x = np.arange(len(y))                                                    # Abscisses
+
+
+### Tracé 3D de la volatilité implicite ###
+# Création des grilles de strike et maturité #
+strike = np.linspace(50, 150, 24)                                        # Strike de 50 à 150
+ttm = np.linspace(0.5, 2.5, 24)                                          # Maturité de 0.5 à 2.5 ans
+strike, ttm = np.meshgrid(strike, ttm)                                   # Grilles de strike et ttm
+print(strike[:2].round(1))                                               # Affiche un extrait de la grille strike
+
+# Calcul de la volatilité implicite #
+iv = (strike - 100) ** 2 / (100 * strike) / ttm                          # Calcul de la volatilité implicite
+print(iv[:5, :3])                                                        # Affiche un extrait de la matrice iv
+
+# Tracé 3D de la surface de volatilité implicite #
+fig = plt.figure(figsize=(10, 6))                                        # Taille de la figure
+ax = fig.add_subplot(111, projection='3d')                               # Ajout d'un subplot 3D 
+surf = ax.plot_surface(strike,                                           # Axe x
+                       ttm,                                              # Axes x et y
+                       iv,                                               # Données à tracer
+                       rstride=2,                                        # Pas de la grille
+                       cstride=2,                                        # Pas de la grille
+                       cmap=plt.cm.coolwarm,                             # Colormap
+                       linewidth=0.5,                                    # Largeur des lignes
+                       antialiased=True)                                 # Tracé de la surface
+
+ax.set_xlabel('strike')                                                  # Label axe x
+ax.set_ylabel('time to maturity')                                        # Label axe y
+ax.set_zlabel('implied volatility')                                      # Label axe z
+fig.colorbar(surf, shrink=0.5, aspect=5)                                 # Barre de couleur
+plt.title('Volatilité implicite en 3D')                                  # Titre du graphique
+plt.show()                                                               # Affiche le graphique
+
+
+### Tracé 3D avec un autre angle de vue ###
+fig = plt.figure(figsize=(10, 6))                                        # Taille de la figure
+ax = fig.add_subplot(111, projection='3d')                               # Ajout d'un subplot 3D
+ax.view_init(30, 60)                                                     # Changement de l'angle de vue
+ax.scatter(strike, ttm, iv, zdir='z', s=25, c='b', marker='^')           # Tracé des points 3D
+ax.set_xlabel('strike')                                                  # Label axe x
+ax.set_ylabel('time to maturity')                                        # Label axe y
+ax.set_zlabel('implied volatility')                                      # Label axe z
+plt.title('Tracé d\'un nuage de points 3D avec les volatilités induites (factices)') # Titre du graphique
+plt.show()                                                               # Affiche le graphique
 

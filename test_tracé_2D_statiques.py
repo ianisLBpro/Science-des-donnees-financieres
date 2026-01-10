@@ -13,7 +13,7 @@ import numpy as np                                                       # NumPy
 
 
 
-# Configuration du style des tracés
+### Configuration du style des tracés ###
 sns.set_style("whitegrid")                                               # Style avec grille blanche
 mpl.rcParams['font.family'] = 'serif'                                    # Police avec empattements
 
