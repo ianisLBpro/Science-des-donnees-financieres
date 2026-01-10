@@ -192,19 +192,56 @@ plt.xlabel('Value')                                                      # Label
 plt.ylabel('Frequency')                                                  # Label axe y
 plt.title('Histogramme 2D statique avec deux séries de données')         # Titre du graphique
 plt.show()
+
 # liste des paramètres que plt.hist peut prendre :
-# plt.hist(x, bins=10, range=None, normed=false, weights=None, cumulative=False,
-#          bottom=None, histtype='bar', align='mid', orientation='vertical',
-#          rwidth=None, log=False, color=None, label=None, stacked=False, hold=None, **kwargs)
+# plt.hist(x,                                                            # Données à tracer
+#          bins=10,                                                      # Nombre de bacs
+#          range=None,                                                   # Plage des valeurs 
+#          density=False,                                                # Normalisation de l'histogramme
+#          weights=None,                                                 # Poids pour chaque valeur
+#          cumulative=False,                                             # Histogramme cumulatif
+#          bottom=None,                                                  # Position de base des barres
+#          histtype='bar',                                               # Type d'histogramme : 'bar', 'barstacked', 'step', 'stepfilled'
+#          align='mid',                                                  # Alignement des barres : 'left', 'center', 'right'
+#          orientation='vertical',                                       # Orientation des barres : 'vertical', 'horizontal'
+#          rwidth=None,                                                  # Largeur relative des barres
+#          log=False,                                                    # Échelle logarithmique
+#          color=None,                                                   # Couleur des barres
+#          label=None,                                                   # Labels pour la légende
+#          stacked=False,                                                # Histogramme empilé
+#          hold=None,                                                    # Maintien du tracé précédent (déprécié)
+#          **kwargs)                                                     # Autres arguments optionnels
 
 
+### Histogramme 2D statique empilant deux jeux de données ###
+plt.figure(figsize=(10, 6))                                              # Taille de la figure
+plt.hist(y, 
+         label=['1st', '2nd'], 
+         color=['b', 'g'], 
+         stacked=True, 
+         bins=20, 
+         alpha=0.5)                                                      # Tracé de l'histogramme empilé avec deux séries de données
+plt.legend(loc=0)                                                        # Légende automatique
+plt.xlabel('Value')                                                      # Label axe x
+plt.ylabel('Frequency')                                                  # Label axe y
+plt.title('Histogramme 2D statique empilant deux jeux de données')       # Titre du graphique
+plt.show()
 
-####################################### Exercice ###########################################
 
-# Tracé d'une fonction exponentielle ave la zone d'intégrale et les labels LaTeX #
+### Boîte à moustache (boxplot) pour deux jeux de données ###
+fig, ax = plt.subplots(figsize=(10, 6))                                  # Taille de la figure
+plt.boxplot(y)                                                           # Tracé de la boîte à moustache
+plt.setp(ax, xticklabels=['1st', '2nd'])                                 # Labels des axes x
+plt.xlabel('Data set')                                                   # Label axe x
+plt.ylabel('Value')                                                      # Label axe y
+plt.title('Boîte à moustache pour deux jeux de données')                 # Titre du graphique
+plt.show()
+# Les ronds indiquent les valeurs aberrantes (outliers) dans le boxplot. 
 
 
-### Définition de la fonction exponentielle et des limites de l'intégrale ###
+### Tracé d'une fonction exponentielle ave la zone d'intégrale et les labels LaTeX ###
+
+# Définition de la fonction exponentielle et des limites de l'intégrale #
 def func(x):                                                             # Définition de la fonction exponentielle
     return 0.5 * np.exp(x) + 1                                           # Fonction exponentielle
 a, b = 0.5, 1.5                                                          # Limites de l'intégrale
@@ -215,10 +252,10 @@ Iy = func(Ix)                                                            # Valeu
 verts = [(a, 0)] + list(zip(Ix,Iy)) + [(b, 0)]                           # Objet de type liste contenant plusieurs tuples (x,y) pour les coordonées du polygone
 
 
-### Tracé de la fonction exponentielle ### 
+# Tracé de la fonction exponentielle #
 from matplotlib.patches import Polygon                                   # Importation de l'objet Polygon pour le tracé de la zone d'intégrale
 
-
+# Création de la figure et du tracé #
 fig, ax = plt.subplots(figsize=(10, 6))                                  # Création de la figure et des axes
 plt.plot(x, y, 'b', linewidth=2)                                         # Tracé des valeurs de la fonction par un trait bleu
 plt.ylim(bottom=0)                                                       # Définition de la valeur y minimale pour l'axe des ordonnées
