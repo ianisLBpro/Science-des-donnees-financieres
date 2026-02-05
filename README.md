@@ -34,7 +34,7 @@ Ce projet est dédié à la visualisation graphique des données au moyen des de
 - Graphique en chandelier (candlestick)
 
 #### trace_2D_interactifs_financial_plot.ipynb
-Ce Fichier Jupyter éxécute les principaux graphiques financiers indépendement les uns des autres. 
+Ce fichier Jupyter éxécute les principaux graphiques financiers indépendement les uns des autres. 
 
 - volatility_plot
 - donut_plot
