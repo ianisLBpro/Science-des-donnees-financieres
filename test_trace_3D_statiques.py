@@ -64,6 +64,6 @@ ax.scatter(strike, ttm, iv, zdir='z', s=25, c='b', marker='^')           # Trac�
 ax.set_xlabel('strike')                                                  # Label axe x
 ax.set_ylabel('time to maturity')                                        # Label axe y
 ax.set_zlabel('implied volatility')                                      # Label axe z
-plt.title('Tracé d\'un nuage de points 3D avec les volatilités induites (factices)') # Titre du graphique
+plt.title('Tracé d\'un nuage de points 3D avec les volatilités induites') # Titre du graphique
 plt.show()                                                               # Affiche le graphique
 

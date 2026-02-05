@@ -86,7 +86,7 @@ plt.plot(y, 'ro')                                                        # Point
 plt.legend(loc=0)                                                        # Légende automatique
 plt.xlabel('Index')                                                      # Label axe x
 plt.ylabel('Value')                                                      # Label axe y
-plt.title('Tracé simple avec deux jeux de données légendés')             # Titre du graphique
+plt.title('Tracé 2D simple avec deux jeux de données légendés')             # Titre du graphique
 plt.show()
 
 

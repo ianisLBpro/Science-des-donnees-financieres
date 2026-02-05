@@ -47,7 +47,7 @@ fig = go.Figure(layout=go.Layout(                                        # Layou
 for col in df.columns:                                                   # Boucle sur les colonnes du DataFrame
     fig.add_scatter(x=df.index, y=df[col], name=col)                     # Ajout des courbes au graphique
 ### Sauvegarder dans un fichier HTML ###
-plot(fig, filename='ply_01.html', auto_open=True)                        # Sauvegarde et ouverture automatique
+plot(fig, filename='./Test_trace_2D_interactifs/Trace_en_ligne_séries_temporelles.html', auto_open=True)                        # Sauvegarde et ouverture automatique
 
 
 ### Création d'une figure type histogramme avec Plotly ###
@@ -63,7 +63,7 @@ for col in daily_returns.columns:                                        # Boucl
                       nbinsx=50,                                         # Nombre de bines
                       opacity=0.75)                                      # Ajout des histogrammes au graphique
 ### Sauvegarder dans un fichier HTML ###
-plot(fig, filename='ply_02.html', auto_open=True)                        # Sauvegarde et ouverture automatique
+plot(fig, filename='./Test_trace_2D_interactifs/Histogramme_des_rendements_quotidiens.html', auto_open=True)                        # Sauvegarde et ouverture automatique
 
 
 # Création d'une figure type boxplot avec Plotly ###
@@ -77,7 +77,7 @@ for col in daily_returns.columns:                                        # Boucl
     fig.add_box(y=daily_returns[col],                                    # Données des rendements
                 name=col)                                                # Ajout des boîtes à moustaches au graphique
 ### Sauvegarder dans un fichier HTML ###
-plot(fig, filename='ply_03.html', auto_open=True)                        # Sauvegarde et ouverture automatique
+plot(fig, filename='./Test_trace_2D_interactifs/Box_plot_des_rendements_quotidiens.html', auto_open=True)                        # Sauvegarde et ouverture automatique
 
 
 ### Création d'une figure type candlestick avec Plotly ###
@@ -102,7 +102,7 @@ fig.add_candlestick(x=df_ohlc.index,                                     # Dates
                     close=df_ohlc['close'],                              # Données de fermeture
                     name='a')                                            # Ajout du candlestick au graphique
 ### Sauvegarder dans un fichier HTML ###
-plot(fig, filename='ply_04.html', auto_open=True)                        # Sauvegarde et ouverture automatique
+plot(fig, filename='./Test_trace_2D_interactifs/Graphique_en_chandelier_candlestick.html', auto_open=True)                        # Sauvegarde et ouverture automatique
 
 
 
