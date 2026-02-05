@@ -1,6 +1,8 @@
 # Visualisation des données 
 Ce projet est dédié à la visualisation graphique des données au moyen des deux librairies matplotlib et plotly.
+
 ## Description des fichiers :
+
 #### test_trace_2D_statiques.py 
 - Tracé 2D statique simple 
 - Tracé 2D statique somme cumulée
@@ -24,8 +26,21 @@ Ce projet est dédié à la visualisation graphique des données au moyen des de
 #### test_trace_3D_statiques.py 
 - Volatilité implicite en 3D
 - Tracé d\'un nuage de points 3D avec les volatilités induites
+
 #### test_trace_2D_interactifs.py 
 - Tracé en ligne séries temporelles
 - Histogramme des rendements quotidiens
 - Box plot des rendements quotidiens
 - Graphique en chandelier (candlestick)
+
+#### trace_2D_interactifs_financial_plot.ipynb
+Ce Fichier Jupyter éxécute les principaux graphiques financiers indépendement les uns des autres. 
+
+- volatility_plot
+- donut_plot
+- pie_plot
+- gauge_plot
+- candlestick_plot
+- ohlc_plot
+- line_plot
+- sub_plot
