@@ -9,6 +9,8 @@ plt.style.use('seaborn-v0_8')
 mpl.rcParams['font.family'] = 'serif'
 
 
+
+
 ### Exercice 1 : Approximation de fonctions ###
 
 # La fonction f(x) que nous allons utiliser comporte un terme trigonométrique et un terme linéaire.
