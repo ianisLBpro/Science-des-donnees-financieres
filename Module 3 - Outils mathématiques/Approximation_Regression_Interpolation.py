@@ -1,7 +1,23 @@
+'''
+Module 3 - Outils mathématiques.Approximation_Regression_Interpolation
+Ce module couvre les concepts d'approximation, de régression et d'interpolation en utilisant des outils mathématiques.
+
+Il comprend plusieurs exercices pratiques pour illustrer ces concepts :
+
+- Exercice 1 : Approximation de fonctions (ligne 28)
+- Exercice 2 : Régression linéaire (ligne 61)
+- Exercice 3 : Régression avec monômes de degré 5 et 7 (ligne 100)
+- Exercice 4 : Régression avec les fonctions de base individuelles (ligne 131)
+- Exercice 5 : Régression avec les fonctions de base sinusoïdales (ligne 188)
+- Exercice 6 : Régression avec des données d'entrées bruitées (ligne 227)
+- Exercice 7 : Régression avec des données non triées (ligne 266)
+- Exercice 8 : Régression avec des dimensions multiples (ligne 305)
+- Exercice 9 : Surface de régression pour une fonction à deux paramètres (ligne 344)
+
+''' 
 
 
-
-
+# Importation des bibliothèques nécessaires pour les calculs numériques et la visualisation
 import numpy as np 
 from pylab import plt, mpl 
 
@@ -13,7 +29,7 @@ mpl.rcParams['font.family'] = 'serif'
 
 ### Exercice 1 : Approximation de fonctions ###
 
-# La fonction f(x) que nous allons utiliser comporte un terme trigonométrique et un terme linéaire.
+# La fonction f(x) que nous allons utiliser comporte un terme trigonométrique et un terme linéaire
 def f(x):
     return np.sin(x) + 0.5 * x 
 
@@ -34,10 +50,10 @@ def create_plot(x, y, styles, labels, axlabels):
     plt.legend(loc=0)
 
 
-# Valeurs de x allant de -2π à 2π utilisées pour le tracé et les calculs de f(x).
+# Valeurs de x allant de -2π à 2π utilisées pour le tracé et les calculs de f(x)
 x = np.linspace(-2 * np.pi, 2 * np.pi, 50) 
 
-# Tracé de la fonction f(x) sur l'intervalle défini.
+# Tracé de la fonction f(x) sur l'intervalle défini
 create_plot([x], [f(x)], ['b'], ['f(x)', 'Tracé de la fonction f(x)'], ['x', 'f(x)'])
 plt.show()
 
@@ -66,16 +82,16 @@ Paramètres de la fonction np.polyfit() :
 - cov : Si True, renvoie la matrice de covariance
 '''
 
-# La régression suivante est linéaire.
-# Elle ne permettra pas de tenir compte de la partie trigonométrique sin de la fonction f(x).
+# La régression suivante est linéaire
+# Elle ne permettra pas de tenir compte de la partie trigonométrique sin de la fonction f(x)
 
-# Nous allons utiliser un polynôme de degré 1 pour l'ajustement linéaire.
+# Nous allons utiliser un polynôme de degré 1 pour l'ajustement linéaire
 res = np.polyfit(x, f(x), deg=1, full=True)
 
-# Résultats : paramètres, résidus, rang effectif, valeur singulière et valeurs de condition relatives.
+# Résultats : paramètres, résidus, rang effectif, valeur singulière et valeurs de condition relatives
 print(res)
 
-# Evaluation de la régression linéaire à partir des paramètres obtenus.
+# Evaluation de la régression linéaire à partir des paramètres obtenus
 ry = np.polyval(res[0], x)
 create_plot([x, x], [f(x), ry], ['b', 'r'], ['f(x)', 'Régression linéaire'], ['x', 'f(x)'])
 plt.show()
@@ -105,7 +121,7 @@ ry = np.polyval(reg, x)
 # Vérification de l'approximation
 print(np.allclose(f(x), ry))
 
-# Calcul de l'erreur quadratique moyenne entre f(x) et l'approximation ry.
+# Calcul de l'erreur quadratique moyenne entre f(x) et l'approximation ry
 print(np.mean((f(x) - ry) ** 2))
 
 create_plot([x, x], [f(x), ry], ['b', 'r'], ['f(x)', 'Régression polynomiale de degré 7'], ['x', 'f(x)'])
@@ -132,7 +148,7 @@ matrix[2, :] = x ** 2
 matrix[1, :] = x
 matrix[0, :] = 1
 
-# Résolution du problème de moindres carrés pour trouver les paramètres de la régression.
+# Résolution du problème de moindres carrés pour trouver les paramètres de la régression
 reg = np.linalg.lstsq(matrix.T, f(x), rcond=None)[0]
 
 # Paramètres de de régression optimale 
@@ -162,12 +178,12 @@ Le résultat est un ajustement parfait.
 matrix[3, :] = np.sin(x)
 reg = np.linalg.lstsq(matrix.T, f(x), rcond=None)[0]
 
-# Paramètres de régression optimaux afin qu'il recouvre la fonction. 
+# Paramètres de régression optimaux afin qu'il recouvre la fonction 
 reg.round(4)
 ry = np.dot(reg, matrix)
 print(np.allclose(f(x), ry))
 
-# Régression produit un ajustement parfait, l'erreur quadratique moyenne est donc nulle.
+# Régression produit un ajustement parfait, l'erreur quadratique moyenne est donc nulle
 print(np.mean((f(x) - ry) ** 2))
 create_plot([x, x], [f(x), ry], ['b', 'r'], ['f(x)', 'Régression avec des fonctions de base sinusoïdales'], ['x', 'f(x)'])
 plt.show()
@@ -206,6 +222,148 @@ plt.show()
 
 ### Exercice 7 : Régression avec des données non triées ###
 
+'''
+Nous allons montrer que la régression fonctionne aussi avec des données désordonnées.
+Dans les exercices précédents, les données d'entrée étaient ordonnées, 
+c'est-à-dire que les valeurs de x étaient triées mais ce n'est pas une condition nécessaire pour la régression.
+'''
+
+xu = np.random.rand(50) * 4 * np.pi - 2 * np.pi
+yu = f(xu) 
+
+print(xu[:10].round(2))  
+print(yu[:10].round(2))
+
+reg = np.polyfit(xu, yu, 5)
+ry = np.polyval(reg, xu)
+
+create_plot([xu, xu], [yu, ry], ['b.', 'ro'], ['f(x)', 'Régression avec des données non triées'], ['x', 'f(x)'])
+plt.show()
+
+
+
+
+### Exercice 8 : Régression avec des dimensions multiples ###
+
+'''
+L'approche par régression à moindres carrés offre un autre aspect intéressant qui est de pouvoir être transposé vers plusieurs dimensions.
+
+Il est nécessaire de prévoir des grilles en deux dimendsions avec des points de données indépendants pour pouvoir visualiser cette fonction.
+
+Ces deux grilles de points de données indépendants et dépendants seront incarnés par x, y et z. 
+'''
+
+# Fonction scalaire de deux variables (x, y) passées sous forme de tuple p = (x, y)
+def fm(p):
+    x, y = p
+    return np.sin(x) + 0.25 * x + np.sqrt(y) +0.05 * y ** 2
+
+# Génère des grilles ou objets ndarray en 2D à partir des ndarray en 1D
+x = np.linspace(0, 10, 20)
+y = np.linspace(0, 10, 20)
+X, Y = np.meshgrid(x, y)
+
+# Récupère des objets ndarray 1D à partir des objets ndarray 2D
+Z = fm((X, Y))
+x = X.flatten()
+y = Y.flatten()
+
+# Import des fonctions de visualisation 3D de Matplotlib
+from mpl_toolkits.mplot3d import Axes3D
+
+fig = plt.figure(figsize=(10, 6))
+ax = fig.add_subplot(projection='3d')
+surf = ax.plot_surface(X, Y, Z, rstride=2, cstride=2, label='Régression dimensions multiples', cmap='coolwarm', linewidth=0.5, antialiased=True)
+
+ax.set_xlabel('x')
+ax.set_ylabel('y')
+ax.set_zlabel('f(x, y)')
+fig.colorbar(surf, shrink=0.5, aspect=5)
+plt.show()
+
+
+
+
+### Exercice 9 : Surface de régression pour une fonction à deux paramètres ###
+
+'''
+Dans cet exercice, nous allons faire une régression plus qualitative en utilisant les fonctions np.sin() et np.sqrt().
+'''
+
+matrix = np.zeros((len(x), 6 + 1))
+matrix[:, 6] = np.sqrt(y)                       # Fonction np.sqrt() pour les paramètre y
+matrix[:, 5] = np.sin(x)                        # Fonction np.sin() pour les paramètre x
+matrix[:, 4] = y ** 2
+matrix[:, 3] = x ** 2 
+matrix[:, 2] = y
+matrix[:, 1] = x
+matrix[:, 0] = 1
+
+reg = np.linalg.lstsq(matrix, fm((x, y)), rcond=None)[0]
+
+# Transformation des résultats de régression en structure de grille
+RZ = np.dot(matrix, reg).reshape((20, 20))      
+
+fig = plt.figure(figsize=(10, 6))
+ax = fig.add_subplot(projection='3d')
+
+# Tracé de la surface de la fonction originale
+surf1 = ax.plot_surface(X, Y, Z, rstride=2, cstride=2, cmap=mpl.cm.coolwarm, linewidth=0.5, antialiased=True)
+
+# Tracé de la surface de régression
+surf2 = ax.plot_wireframe(X, Y, RZ, rstride=2, cstride=2, label='Surface de régression dimensions multiples')
+
+ax.set_xlabel('x')
+ax.set_ylabel('y')
+ax.set_zlabel('f(x, y)')
+ax.legend()
+fig.colorbar(surf1, shrink=0.5, aspect=5)
+plt.show()
+
+
+
+
+### Exercice 10 : Interpolation par splines linéaires et cubiques ###
+
+'''
+Dans cet exercice, nous allons faire de l'interpolation par splines cubiques, elle ne s'utilise que dans les problèmes à peu de dimensions.
+
+En partant d'un jeu ordonné de points d'observation dans la dimension x, le principe est de faire une régression entre deux points de données voisins,
+de manière à ce que les points soient trouvé par la fonction d'interpolation définie et que les points soient différenciable de façon continue.
+
+Pour ce faire, il faut une interpolation au moins de degré 3, donc avec des splines cubiques.
+
+Pour autant, l'approche est applicable avec des splines quadratiques ou même linéaires, mais les résultats sont moins satisfaisants.
+'''
+
+# Interpolation de splines linéaires 
+
+# Import du sous-paquet Scipy pour l'interpolation
+import scipy.interpolate as spi
+
+# Valeurs de x allant de -2π à 2π utilisées pour le tracé et les calculs de f(x)
+x = np.linspace(-2 * np.pi, 2 * np.pi, 25)
+
+# Fonction f(x) que nous allons utiliser pour l'interpolation
+def f(x):
+    return np.sin(x) + 0.5 * x
+
+# Implémente une interpolation de splines linéaires
+ipo = spi.splrep(x, f(x), k=1)  
+
+# Dérive de la valeur interpolées
+iy = spi.splev(x, ipo)
+
+# Vérfication que les valeurs interpolées sont assez proches des valeurs de la fonction
+print(np.allclose(f(x), iy))
+
+create_plot([x, x], [f(x), iy], ['b', 'ro'], ['f(x)', 'Interpolation par splines linéaires'], ['x', 'f(x)'])
+plt.show()
+
+
+
+
+# Interpolation par splines linéaires sur un sous-ensemble des données 
 
 
 
