@@ -13,7 +13,7 @@ Il comprend plusieurs exercices pratiques pour illustrer ces concepts :
 - Exercice 7 : Régression avec des données non triées (ligne 266)
 - Exercice 8 : Régression avec des dimensions multiples (ligne 305)
 - Exercice 9 : Surface de régression pour une fonction à deux paramètres (ligne 344)
-
+- Exercice 10 : Interpolation par splines linéaires et cubiques (ligne 381)
 ''' 
 
 
@@ -110,7 +110,7 @@ Nous verrons que les régressions résultantes épousent beaucoup mieux la fonct
 # Polynôme de degré 5 
 reg = np.polyfit(x, f(x), deg=5)
 ry = np.polyval(reg, x)
-create_plot([x, x], [f(x), ry], ['b', 'r'], ['f(x)', 'Régression polynomiale de degré 5'], ['x', 'f(x)'])
+create_plot([x, x], [f(x), ry], ['b', 'r'], ['f(x)', 'Régression avec monômes de degré 5'], ['x', 'f(x)'])
 plt.show()
 
 
@@ -124,7 +124,7 @@ print(np.allclose(f(x), ry))
 # Calcul de l'erreur quadratique moyenne entre f(x) et l'approximation ry
 print(np.mean((f(x) - ry) ** 2))
 
-create_plot([x, x], [f(x), ry], ['b', 'r'], ['f(x)', 'Régression polynomiale de degré 7'], ['x', 'f(x)'])
+create_plot([x, x], [f(x), ry], ['b', 'r'], ['f(x)', 'Régression avec monômes de degré 7'], ['x', 'f(x)'])
 plt.show()
 
 
@@ -156,7 +156,7 @@ print(reg.round(4))
 
 # Estimation de régression pour les valeurs de la fonction 
 ry = np.dot(reg, matrix)
-create_plot([x, x], [f(x), ry], ['b', 'r'], ['f(x)', 'Régression avec des monômes de degré 3'], ['x', 'f(x)'])
+create_plot([x, x], [f(x), ry], ['b', 'r'], ['f(x)', 'Régression avec des monômes de degré 3 (fonctions de base individuelles)'], ['x', 'f(x)'])
 plt.show()
 
 
@@ -329,14 +329,17 @@ plt.show()
 Dans cet exercice, nous allons faire de l'interpolation par splines cubiques, elle ne s'utilise que dans les problèmes à peu de dimensions.
 
 En partant d'un jeu ordonné de points d'observation dans la dimension x, le principe est de faire une régression entre deux points de données voisins,
-de manière à ce que les points soient trouvé par la fonction d'interpolation définie et que les points soient différenciable de façon continue.
-
+de manière à ce que les points soient trouvés par la fonction d'interpolation définie et que les points soient différenciable de façon continue.
 Pour ce faire, il faut une interpolation au moins de degré 3, donc avec des splines cubiques.
-
 Pour autant, l'approche est applicable avec des splines quadratiques ou même linéaires, mais les résultats sont moins satisfaisants.
+
+Les interpolations splines sont souvent utilisées dans le domaine financier pour générer des estimations de valeurs dépendantes pour des points de données indépendants. 
+Ces points de données indépendants ne font pas partie des observations fournies. 
+
+L'inconvénient des splines linéaires est que la fonction ne peut pas être différenciables en continu au niveau des points de données originaux. 
 '''
 
-# Interpolation de splines linéaires 
+# Interpolation de splines linéaires #
 
 # Import du sous-paquet Scipy pour l'interpolation
 import scipy.interpolate as spi
@@ -361,10 +364,61 @@ create_plot([x, x], [f(x), iy], ['b', 'ro'], ['f(x)', 'Interpolation par splines
 plt.show()
 
 
+# Interpolation par splines linéaires sur un sous-ensemble des données #
+
+''' 
+Pour l'interpolation, les fonctions portent les noms sci.splrep() et sci.splev(). 
+
+Les principaux paramètres de sci.splrep() sont :
+- x : Coordonnées x (ordonnées, valeurs des variables indépendantes)
+- y : Coordonnées y (ordonnées en x, valeurs des variables dépendantes) 
+- w : Pondération pour les coordonnées y
+- xb, xe : Intervalle de l'ajustement; si None, alors [x[0], x[-1]]
+- k : Degré de l'ajustement de spline (1 <= k <= 5)
+- s : Facteur de lissage (lissage proportionnel à la valeur)
+- full_output : Si True, renvoie des données additionnelles
+- quiet : Si True, pas d'affichage des messages 
+
+Les principaux paramètres de sci.splev() sont :
+- x : Coordonnées x (ordonnées, valeurs des variables indépendantes)
+- tck : Séquence de longueur 3 renvoyée par sci.splrep() (noeuds, coefficients, degrés)
+- der : Ordre de dérivation (0 pour la fonction, 1 pour la première dérivée)
+- ext : Comportement si x n'est pas dans la séquences de noeuds (0 = extrapolation, 1 = renvoi de 0 et 2 = déclenche ValueError)
+'''
+
+# Plus petit intervalle avec plus de points
+xd = np.linspace(1.0, 3.0, 50)
+iyd = spi.splev(xd, ipo)
+
+create_plot([xd, xd], [f(xd), iyd], ['b', 'ro'], ['f(x)', 'Interpolation par splines linéaires sur un sous-ensemble des données'], ['x', 'f(x)'])
+plt.show()
 
 
-# Interpolation par splines linéaires sur un sous-ensemble des données 
+# Interpolation par splines cubiques sur un sous-ensemble des données #
 
+'''
+Les splines cubiques sont plus adaptées pour l'interpolation et donnent souvent de meilleurs résultats.
+
+Lorsqu'il est possible d'utiliser l'interpolation splines, les résultats sont généralement meilleurs que les régressions MCO.
+Il ne faut pas oublier que pour l'interpolation les données doivent être ordonnées, 
+c'est-à-dire que les valeurs de x doivent être triées et non bruitées et nous sommes limités à des fonctions à peu de dimensions.
+L'opération est également plus lourde en traitement et peut demander beaucoup plus de temps qu'une régression dans certains cas. 
+'''
+
+# Interpolation spline cubique sur le jeu de données complet
+ipo = spi.splrep(x, f(x), k=3)
+
+# Les résultats sont appliqués au petit intervalle 
+iyd = spi.splev(xd, ipo)
+
+# L'interpolation n'est toujours pas parfaite
+print(np.allclose(f(xd), iyd))
+
+# Mais elle est meilleure qu'auparavant, l'erreur quadratique moyenne est plus faible
+print(np.mean((f(xd) - iyd) ** 2))
+
+create_plot([xd, xd], [f(xd), iyd], ['b', 'ro'], ['f(x)', 'Interpolation par splines cubiques sur un sous-ensemble des données'], ['x', 'f(x)'])
+plt.show()
 
 
 
