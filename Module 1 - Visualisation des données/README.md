@@ -3,7 +3,7 @@ Ce projet est dédié à la visualisation graphique des données au moyen des de
 
 ## Description des fichiers :
 
-#### traces_2D_statiques.py 
+#### 1 - traces_2D_statiques.py 
 - Tracé 2D statique simple 
 - Tracé 2D statique somme cumulée
 - Tracé 2D avec style et échelle personnalisé
@@ -23,17 +23,17 @@ Ce projet est dédié à la visualisation graphique des données au moyen des de
 - Boîte à moustache pour deux jeux de données
 - Tracé d\'une fonction exponentielle avec intégrale
 
-#### traces_3D_statiques.py 
+#### 2 - traces_3D_statiques.py 
 - Volatilité implicite en 3D
 - Tracé d\'un nuage de points 3D avec les volatilités induites
 
-#### traces_2D_interactifs.py 
+#### 3 - traces_2D_interactifs.py 
 - Tracé en ligne séries temporelles
 - Histogramme des rendements quotidiens
 - Box plot des rendements quotidiens
 - Graphique en chandelier (candlestick)
 
-#### financial_plot_2D_interactifs.ipynb
+#### 4 - financial_plot_2D_interactifs.ipynb
 Ce fichier Jupyter éxécute les principaux graphiques financiers indépendement les uns des autres. 
 
 - volatility_plot
