@@ -44,3 +44,16 @@ Ce fichier Jupyter éxécute les principaux graphiques financiers indépendement
 - ohlc_plot
 - line_plot
 - sub_plot
+
+
+
+
+### Pour exécuter un script Python, après installation de l'environnement, veuillez effectuer la commande suivante dans l'invite de commande (Pensez à activer l'environnement virtuel) :
+```bash
+python '.\Module 1 - Visualisation des données\<nom du script>.py'
+```
+
+### Pour éxécuter un script Jupyter, après installation de l'environnement, veuillez effectuer la commande suivante dans l'invite de commande (Pensez à activer l'environnement virtuel) :
+```bash
+jupyter nbconvert --execute --to html "<nom du script jupyter>.ipynb"
+```
