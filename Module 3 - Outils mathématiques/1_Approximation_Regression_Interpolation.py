@@ -360,7 +360,7 @@ iy = spi.splev(x, ipo)
 # Vérfication que les valeurs interpolées sont assez proches des valeurs de la fonction
 print(np.allclose(f(x), iy))
 
-create_plot([x, x], [f(x), iy], ['b', 'ro'], ['f(x)', 'Interpolation par splines linéaires'], ['x', 'f(x)'])
+create_plot([x, x], [f(x), iy], ['b', 'ro'], ['f(x)', 'Interpolation par splines linéaires 2D'], ['x', 'f(x)'])
 plt.show()
 
 
@@ -390,7 +390,7 @@ Les principaux paramètres de sci.splev() sont :
 xd = np.linspace(1.0, 3.0, 50)
 iyd = spi.splev(xd, ipo)
 
-create_plot([xd, xd], [f(xd), iyd], ['b', 'ro'], ['f(x)', 'Interpolation par splines linéaires sur un sous-ensemble des données'], ['x', 'f(x)'])
+create_plot([xd, xd], [f(xd), iyd], ['b', 'ro'], ['f(x)', 'Interpolation par splines linéaires sur un sous-ensemble des données 2D'], ['x', 'f(x)'])
 plt.show()
 
 
@@ -417,7 +417,7 @@ print(np.allclose(f(xd), iyd))
 # Mais elle est meilleure qu'auparavant, l'erreur quadratique moyenne est plus faible
 print(np.mean((f(xd) - iyd) ** 2))
 
-create_plot([xd, xd], [f(xd), iyd], ['b', 'ro'], ['f(x)', 'Interpolation par splines cubiques sur un sous-ensemble des données'], ['x', 'f(x)'])
+create_plot([xd, xd], [f(xd), iyd], ['b', 'ro'], ['f(x)', 'Interpolation par splines cubiques sur un sous-ensemble des données 2D'], ['x', 'f(x)'])
 plt.show()
 
 
