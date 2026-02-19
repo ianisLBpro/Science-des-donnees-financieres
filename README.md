@@ -1,4 +1,4 @@
-# La Science des Données Financières
+# Science des Données Financières
 
 Ce projet regroupe l'ensemble de mes travaux réalisés dans le cadre de l'étude de la science des données appliquée à la finance. Il couvre un large spectre de sujets allant de l'optimisation des performances Python jusqu'à l'apprentissage machine, en passant par la visualisation de données, les outils mathématiques et la modélisation stochastique.
 
