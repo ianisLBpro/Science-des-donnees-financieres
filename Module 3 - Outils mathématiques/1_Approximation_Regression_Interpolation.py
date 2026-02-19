@@ -107,14 +107,14 @@ Les deux prochaines tentatives montrerons les degrés 5 et 7 pour les fonctions 
 Nous verrons que les régressions résultantes épousent beaucoup mieux la fonction f(x).
 '''
 
-# Polynôme de degré 5 
+# Monômes de degré 5 
 reg = np.polyfit(x, f(x), deg=5)
 ry = np.polyval(reg, x)
 create_plot([x, x], [f(x), ry], ['b', 'r'], ['f(x)', 'Régression avec monômes de degré 5'], ['x', 'f(x)'])
 plt.show()
 
 
-# Polynôme de degré 7
+# Monômes de degré 7
 reg = np.polyfit(x, f(x), deg=7)   
 ry = np.polyval(reg, x)
 
