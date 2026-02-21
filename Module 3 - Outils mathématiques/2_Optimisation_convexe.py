@@ -5,7 +5,6 @@ Elle sert par exemple au calibrage des modèles d'évaluation d'options en fonct
 Nous allons utiliser tour à tour une minimisation globale puis une minimisation locale en utilisant les fonctions de la bibliothèque SciPy.optimize :
 - sco.brute() pour la minimisation globale
 - sco.fmin() pour la minimisation locale
-
 '''
 
 
@@ -72,6 +71,12 @@ def fo(p):
     return z
 output = True
 
+print("\n" + "=" * 60)
+print(" EXERCICE 2 : Optimisation globale (grille grossière, pas=5) ")
+print("=" * 60)
+print(f"{'x':>8} | {'y':>8} | {'f(x,y)':>8}")
+print("-" * 32)
+
 # Opimisation par force brute : on évalue la fonction fo() sur une grille de points définie par les intervalles et les pas spécifiés
 sco.brute(fo, ((-10, 10.1, 5), (-10, 10.1, 5)), finish=None)
 
@@ -85,9 +90,12 @@ Les valeurs de paramètres optimales sont dorénavant x = y = -1.4 et la valeur 
 '''
 
 output = False 
+print("\n" + "=" * 60)
+print(" EXERCICE 2.1 : Optimisation globale (grille fine, pas=0.1) ")
+print("=" * 60)
 opt1 = sco.brute(fo, ((-10, 10.1, 0.1), (-10, 10.1, 0.1)), finish=None)
-print(opt1)
-print(fm(opt1))
+print(f"  Paramètres optimaux (x, y) : {opt1}")
+print(f"  Valeur minimale de f(x, y)  : {fm(opt1):.6f}")
 
 
 
@@ -102,10 +110,16 @@ sans oublier le nombre maximal d'itérations et d'appels de fonction. Cette opti
 
 output = True 
 
+print("\n" + "=" * 60)
+print(" EXERCICE 3 : Optimisation locale (sco.fmin) ")
+print("=" * 60)
+print(f"{'x':>8} | {'y':>8} | {'f(x,y)':>8}")
+print("-" * 32)
+
 # Procédure d'optimisation convexe locale, maxiter est limité ainsi que maxfun pour la pédagogie, mais on pourrait les augmenter pour de meilleurs résultats
 opt2 = sco.fmin(fo, opt1, xtol=0.001, ftol=0.001, maxiter=15, maxfun=20)
-print(opt2)
-print(fm(opt2))
+print(f"\n  Paramètres optimaux (x, y) : {opt2}")
+print(f"  Valeur minimale de f(x, y)  : {fm(opt2):.6f}")
 
 
 
@@ -118,15 +132,82 @@ Dans cet exercice, nous montrons que les paramètres de départ x = y = 2 fait a
 '''
 
 output = False 
-sco.fmin(fo, (2.0, 2.0), maxiter=250)
+print("\n" + "=" * 60)
+print(" EXERCICE 3.1 : Optimisation locale depuis (2, 2) ")
+print("=" * 60)
+result31 = sco.fmin(fo, (2.0, 2.0), maxiter=250)
+print(f"  Paramètres optimaux (x, y) : {result31}")
+print(f"  Valeur minimale de f(x, y)  : {fm(result31):.6f}")
 
 
 
 
 '''
 Exercice 4 : Optimisation contrainte 
+Nous allons modéliser et résoudre le problème d'un investisseur. 
 
+Il peut investir dans 2 actifs risqués au même prix aujourd'hui de 10 USD : 
+- L'actif a gain dans 1 an (état u) = 15 USD ou gain dans 1 an (état d) = 5 USD
+- L'actif b gain dans 1 an (état u) = 5 USD ou gain dans 1 an (état d) = 12 USD
+- Probabilité de l'état u = 0.5 et probabilité de l'état d = 0.5
+
+L'investisseur possède un budget w = 100 USD et il doit décider de la quantité à investir dans chacun des actifs.
+Il veut maximiser son utilité espérée, c'est-à-dire son bien-être moyen en tenant compte des différents scénarios possibles.
+
+On cherche les quantités a et b (nombre de titres achetés) qui maximisent :
+E[u(w)] = 0.5 * √w_u + 0.5 * √w_d
+
+Avec les contraintes suivantes :
+w_u = a*15 + b*5 → richesse si état u
+w_d = a*5 + b*12 → richesse si état d
+a*10 + b*10 ≤ 100 → on ne peut pas dépenser plus que le budget
+a, b ≥ 0 → on ne peut pas vendre à découvert
+
+Nous pouvons donc résoudre ce problème avec scipy.optimize.minimize().
+Cette fonction attend en entrée la fonction à minimiser et les conditions sous forme d'égalité ou d'inégalité (une liste d'objets dict).
+Elle ne sait que minimiser donc on transforme :
+maximiser E[u] ⟺ minimiser -E[u]
+
+C'est pourquoi la fonction Python retourne une valeur négative.
 '''
+
+import math 
+
+
+# La fonction à minimiser pour maximiser l'utilité espérée
+def Eu(p):
+    s, b = p
+    return -(0.5 * math.sqrt(s * 15 + b * 5) +
+             0.5 * math.sqrt(s * 5  + b * 12))
+
+# La contrainte d'inégalité : le coût total de l'investissement ne doit pas dépasser le budget (sous forme dict)
+cons = ({'type': 'ineq', 'fun': lambda p: 100 - p[0] * 10 - p[1] * 10})
+
+# Les bornes : s et b entre 0 et 1000 (pas de vente à découvert)
+bnds = ((0, 1000), (0, 1000))
+
+print("\n" + "=" * 60)
+print(" EXERCICE 4 : Optimisation contrainte (portefeuille optimal) ")
+print("=" * 60)
+
+# L'optimisation en partant du point initial [5, 5]
+result = sco.minimize(Eu, [5, 5], method='SLSQP', bounds=bnds, constraints=cons)
+print("\n--- Résultat complet de l'optimiseur ---")
+print(result)
+
+print("\n--- Résumé des résultats ---")
+# Les valeurs des paramètres optimaux, autrement dit le portefeuille optimal
+print(f"  Quantités optimales  → Actif A : {result['x'][0]:.4f} titres | Actif B : {result['x'][1]:.4f} titres")
+
+# En pourcentage, on peut calculer les poids de chaque actif dans le portefeuille optimal
+weights = result['x'] * 10 / 100  
+print(f"  Poids dans le portfolio → Actif A : {weights[0]*100:.2f}% | Actif B : {weights[1]*100:.2f}%")
+
+# La valeur de fonction minimale négative en tant que valeur de solution optimale
+print(f"  Utilité espérée maximale E[u(w)] : {-result['fun']:.6f}")
+
+# Toute la richesse est investie 
+print(f"  Budget total investi : {np.dot(result['x'], [10, 10]):.2f} USD (budget = 100 USD)")
 
 
 
