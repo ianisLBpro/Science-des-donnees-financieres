@@ -6,7 +6,6 @@ Nous allons utiliser tour à tour une minimisation globale puis une minimisation
 - sco.brute() pour la minimisation globale
 - sco.fmin() pour la minimisation locale
 
-
 '''
 
 
@@ -94,7 +93,7 @@ print(fm(opt1))
 
 
 '''
-Exercice 3.1 : Optimisation locale
+Exercice 3 : Optimisation locale
 Dans cet exercice, nous allons exploiter les résultats de l'optimisation globale pour réaliser un optimisation convexe locale. 
 Nous utiliserons donc la fonction sco.fmin() qui attend en entrée la fonction à minimiser et les valeurs de paramètres initiales. 
 Les valeurs en option correspondent à la tolérance des paramètres d'entrée et la tolérance de la valeur de la fonction, 
@@ -112,7 +111,7 @@ print(fm(opt2))
 
 
 '''
-Exercice 3.2 : 
+Exercice 3.1 : Valeur minimale supérieure à zéro 
 Dans les problèmes d'optimisation complexe, il est souvent conseillé de commencer par la minimisation globale,
 car la minimisation locale se fonde sur un algorithme qui peut facilement tomber dans le piège d'un minimum local relatif ignorant d'autres minimums locaux. 
 Dans cet exercice, nous montrons que les paramètres de départ x = y = 2 fait aboutir à une valeur minimale supérieure à zéro. 
@@ -121,6 +120,13 @@ Dans cet exercice, nous montrons que les paramètres de départ x = y = 2 fait a
 output = False 
 sco.fmin(fo, (2.0, 2.0), maxiter=250)
 
+
+
+
+'''
+Exercice 4 : Optimisation contrainte 
+
+'''
 
 
 
