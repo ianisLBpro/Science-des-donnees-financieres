@@ -64,7 +64,7 @@ Ce module couvre les outils mathématiques fondamentaux utilisés en finance qua
 | Fichier | Description |
 |---|---|
 | `1_Approximation_Regression_Interpolation.py` | 10 exercices progressifs : régression polynomiale (`polyfit`/`polyval`), fonctions de base personnalisées par moindres carrés (`linalg.lstsq`), bases sinusoïdales, données bruitées, régression multidimensionnelle (surface 3D), et interpolation par splines (linéaire et cubique). |
-| `2_Optimisation_convexe.py` | *À venir* — Optimisation convexe. |
+| `2_Optimisation_convexe.py` | 4 exercices progressifs sur l'optimisation convexe avec `scipy.optimize` : visualisation 3D de la fonction objectif, minimisation globale par force brute (`sco.brute`) avec grille grossière puis fine (résultat : x = y ≈ −1.4, min ≈ −1.8), affinement par optimisation locale (`sco.fmin`) et illustration du piège du minimum local relatif selon le point de départ, et enfin optimisation contrainte (`sco.minimize`, méthode SLSQP) pour maximiser l'utilité espérée d'un portefeuille de deux actifs risqués sous contrainte budgétaire et d'absence de vente à découvert. |
 | `3_Integration.py` | *À venir* — Intégration numérique. |
 | `4_Calcul_formel_ou_symbolique.py` | *À venir* — Calcul formel et symbolique. |
 
