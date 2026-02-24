@@ -9,7 +9,7 @@ Ce projet regroupe l'ensemble de mes travaux réalisés dans le cadre de l'étud
 | Calcul scientifique | `numpy`, `scipy`, `pandas` |
 | Visualisation | `matplotlib`, `seaborn`, `plotly`, `cufflinks` |
 | Finance | `yfinance` |
-| Performance | `numba` |
+| Performance | `numba`, `llvmlite` |
 | Notebooks | `jupyter`, `ipykernel`, `ipywidgets` |
 
 > **Python 3.14** — Voir le fichier [INSTALLATION.md](INSTALLATION.md) pour la mise en place de l'environnement virtuel.
@@ -24,7 +24,7 @@ Ce module explore les différentes stratégies d'optimisation des performances e
 
 | Fichier | Description |
 |---|---|
-| `arbres_binomiaux.py` | Construction d'un arbre binomial pour modéliser l'évolution d'un cours d'action et valoriser une option européenne (call/put) par induction rétrograde en probabilité risque-neutre. Inclut une analyse de scénarios (perte/gain max, ratio risque/rendement). |
+| `arbres_binomiaux.py` | Construction d'un arbre binomial (Cox-Ross-Rubinstein 1979) selon 6 approches : Python pur, NumPy vectorisé, Numba JIT, Cython (à venir), affichage graphique Matplotlib. L'exercice 6 valorise des options européennes (Call/Put) par backward induction sous probabilité risque-neutre, compare les résultats à la formule fermée de Black-Scholes-Merton, vérifie la parité Call-Put, calcule les Greeks (Delta, Gamma, Theta) et analyse la convergence du modèle binomial vers Black-Scholes. |
 | `nb_pi_test.py` | Estimation du nombre π par la méthode de Monte Carlo (points aléatoires dans un cercle unité). Comparaison de trois implémentations : boucle Python, vectorisation NumPy et visualisation graphique. |
 | `nb_premiers_test.py` | Test de primalité accéléré par le compilateur JIT de Numba pour illustrer les gains de performance. |
 | `simulation_monte_carlo_put_euro.py` | Pricing d'un put européen par simulation Monte Carlo de trajectoires de mouvement brownien géométrique (dynamique Black-Scholes). Comparaison : boucles Python vs NumPy vs Numba. |

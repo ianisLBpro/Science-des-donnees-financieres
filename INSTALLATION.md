@@ -75,8 +75,10 @@ Cela installera tous les packages nécessaires avec les versions exactes :
 | `seaborn` | Graphiques statistiques |
 | `plotly` | Graphiques interactifs |
 | `cufflinks` | Lien Pandas ↔ Plotly |
-| `scipy` | Calcul scientifique |
+| `scipy` | Calcul scientifique et statistiques |
 | `yfinance` | Données financières Yahoo Finance |
+| `numba` | Compilation JIT pour accélération Python |
+| `llvmlite` | Backend LLVM requis par Numba |
 | `requests` | Requêtes HTTP |
 | `beautifulsoup4` | Web scraping |
 | `ipykernel` | Noyau Jupyter pour notebooks |
@@ -85,7 +87,7 @@ Cela installera tous les packages nécessaires avec les versions exactes :
 ### 6. Vérifier l'installation
 
 ```bash
-python -c "import numpy, pandas, matplotlib, plotly, scipy, yfinance; print('Toutes les dépendances sont installées !')"
+python -c "import numpy, pandas, matplotlib, plotly, scipy, yfinance, numba; print('Toutes les dépendances sont installées !')"
 ```
 
 ---
