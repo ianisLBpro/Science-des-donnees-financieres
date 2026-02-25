@@ -20,7 +20,7 @@ def fib_rec_py2 (n):
         return n
     else : 
         return fib_rec_py2(n - 1) + fib_rec_py2(n - 2)
-print('\n- Deuxième méthode (plus rapide grâce à la mémorisation, mais s\'arrête à 998 pour cause de dépassement de la limite de récursion)')
+print('\n- Deuxième méthode (plus rapide grâce à la mémorisation, mais s\'arrête à 999, dépassement de la limite de récursion)')
 n = int(input('Quel est le n-ième nombre de Fibonacci recherché ? '))
 print(f'Le {n}ème nombre de Fibonacci est {fib_rec_py2(n)}\n')
 
@@ -31,7 +31,7 @@ def fib_it_py(n):
     for i in range(1, n + 1 ):
         x, y = y, x + y 
     return x
-print('\n- Troisième méthode (très rapide et sans limite de récursion)')
+print('\n- Troisième méthode (très rapide et sans limite de récursion, mais ne pas dépasser 4300 digits)')
 n = int(input('Quel est le n-ième nombre de Fibonacci recherché ? '))
 print(f'Le {n}ème nombre de Fibonacci est {fib_it_py(n)}\n')
 

@@ -39,6 +39,7 @@ Cela fait diminuer la taille de ndarray, et rend plus facile la construction de 
 print("\n" + "="*70)
 print("Exercice 1 : CONSTRUCTION D'UN ARBRE BINOMIAL - PYTHON PUR")
 print("="*70)
+
 # Valeur initiale de l'actif risqué 
 S0 = 36.
 # Horizon temporel de la simulation d'arbre binomial
@@ -87,6 +88,7 @@ Exercice 2 : Arbre binomial avec Numpy en utilisant du code totalement vectoris�
 print("\n" + "="*70)
 print("Exercice 2 : CONSTRUCTION D'UN ARBRE BINOMIAL - CODE VECTORISÉ AVEC NUMPY")
 print("="*70)
+
 # Fonction de simulation d'arbre binomial à 4 périodes
 M = 4 
 # Séquence de 0 à M 
@@ -172,6 +174,7 @@ Exercice 5 : Affichage graphique de l'arbre binomial avec Matplotlib
 print("\n" + "="*70)
 print("Exercice 5 : CONSTRUCTION D'UN ARBRE BINOMIAL - AFFICHAGE GRAPHIQUE AVEC MATPLOTLIB")
 print("="*70)
+
 S0 = 36.
 T = 1.0
 r = 0.06 
@@ -234,7 +237,7 @@ plot_tree(S)
 
 
 '''
-Exercice 6 : Valorisation d'options européennes et analyse par l'arbre binomial
+Exercice 6 : Valorisation d'options européennes et analyse par l'arbre binomial (En cours de rédaction)
 On utilise l'arbre binomial de Cox-Ross-Rubinstein pour valoriser des options européennes Call et Put,
 puis on vérifie la cohérence du modèle par benchmark avec la formule fermée de Black-Scholes-Merton.
 - Valorisation par backward induction en probabilité risque-neutre
@@ -245,7 +248,7 @@ print("\n" + "="*70)
 print("Exercice 6 : VALORISATION D'OPTIONS EUROPÉENNES PAR ARBRE BINOMIAL")
 print("="*70)
 
-# --- Paramètres du modèle ---
+# Paramètres 
 S0 = 36.              # Prix spot du sous-jacent
 K = 40.               # Strike (prix d'exercice)
 T = 1.0               # Maturité (en années)
@@ -253,8 +256,7 @@ r = 0.06              # Taux sans risque continu
 sigma = 0.2           # Volatilité annualisée
 M = 500               # Nombre de pas temporels
 
-# Construction de l'arbre et valorisation par backward induction 
-
+# Construction de l'arbre et valorisation par backward induction sous la probabilité risque-neutre q
 def binomial_option_price(S0, K, T, r, sigma, M, option_type="CALL"):
     '''
     Valorisation d'une option européenne par le modèle binomial de CRR.
