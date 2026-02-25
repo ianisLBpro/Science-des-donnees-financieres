@@ -20,15 +20,15 @@ Ce projet regroupe l'ensemble de mes travaux réalisés dans le cadre de l'étud
 
 ### Module 0 — Performance de Python
 
-Ce module explore les différentes stratégies d'optimisation des performances en Python à travers des problèmes classiques et financiers. Chaque exercice compare plusieurs implémentations (boucles Python, vectorisation NumPy, compilation JIT avec Numba) pour mettre en évidence les gains de performance.
+Ce module explore différentes stratégies d'optimisation des performances en Python appliquées à des problèmes financiers et classiques. Chaque exercice compare plusieurs implémentations (boucles Python, vectorisation NumPy, compilation JIT avec Numba) pour mettre en évidence les gains de performance.
 
 | Fichier | Description |
 |---|---|
-| `arbres_binomiaux.py` | Construction d'un arbre binomial (Cox-Ross-Rubinstein 1979) selon 6 approches : Python pur, NumPy vectorisé, Numba JIT, Cython (à venir), affichage graphique Matplotlib. L'exercice 6 valorise des options européennes (Call/Put) par backward induction sous probabilité risque-neutre, compare les résultats à la formule fermée de Black-Scholes-Merton. |
-| `nb_pi_test.py` | Estimation du nombre π par la méthode de Monte Carlo (points aléatoires dans un cercle unité). Comparaison de trois implémentations : boucle Python, vectorisation NumPy et visualisation graphique. |
-| `nb_premiers_test.py` | Test de primalité accéléré par le compilateur JIT de Numba pour illustrer les gains de performance. |
+| `arbres_binomiaux.py` | Construction d'un arbre binomial (Cox-Ross-Rubinstein 1979) selon 6 approches : Python pur, NumPy vectorisé, Numba JIT, Cython (à venir), affichage graphique Matplotlib. Valorisation d'options européennes (Call/Put) par backward induction, comparaison avec Black-Scholes-Merton. |
+| `recherche_nb_pi.py` | Estimation du nombre π par la méthode de Monte Carlo. Visualisation des points aléatoires, version Python pur, version NumPy vectorisée, analyse de performance. |
+| `recherches_nb_premiers.py` | Test de primalité accéléré par Numba JIT pour illustrer les gains de performance sur des boucles Python. |
 | `simulation_monte_carlo_put_euro.py` | Pricing d'un put européen par simulation Monte Carlo de trajectoires de mouvement brownien géométrique (dynamique Black-Scholes). Comparaison : boucles Python vs NumPy vs Numba. |
-| `suite_de_Fibonacci.py` | Calcul des nombres de Fibonacci selon trois approches : récursion naïve, récursion mémoïsée (`lru_cache`) et méthode itérative, avec un générateur pour afficher la suite. |
+| `recherches_suite_fibonacci.py` | Calcul des nombres de Fibonacci selon trois approches : récursion naïve, récursion mémoïsée (`lru_cache`) et méthode itérative, avec un générateur pour afficher la suite. |
 
 ---
 
