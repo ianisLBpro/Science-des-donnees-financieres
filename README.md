@@ -50,12 +50,12 @@ Les graphiques interactifs générés sont disponibles dans les dossiers `Financ
 
 ### Module 2 — Séries temporelles financières
 
-Ce module est consacré à l'analyse des séries temporelles financières.
+Ce module est consacré à l'importation, l'analyse et la visualisation des séries temporelles financières avec `pandas`, `matplotlib` et `yfinance`.
 
 | Fichier | Description |
 |---|---|
-| `1_Donnees_financieres.py` | *À venir* — Récupération et manipulation de données financières. |
-| `2_Statistiques_mobiles.py` | *À venir* — . |
+| `1_Donnees_financieres.py` | Importation de 12 instruments financiers (actions, indices, ETF, taux de change, matières premières) via `yfinance` sur 2016–2026. **Étape 0** : téléchargement et mise en forme des données (MultiIndex `yfinance` → colonnes RIC). **Étape 1** : inspection et statistiques descriptives (`info`, `describe`, `aggregate`, `diff`, `pct_change`), tracé multiple en ligne et bar plot des rendements moyens. **Étape 2** : calcul des rendements logarithmiques vectorisés, évolution cumulative normalisée, rééchantillonnage hebdomadaire (`'W'`) et mensuel (`'ME'`). |
+| `2_Statistiques_mobiles.py` | *À venir* — Statistiques mobiles (moyennes mobiles, volatilité glissante, corrélations). |
 ---
 
 ### Module 3 — Outils mathématiques
