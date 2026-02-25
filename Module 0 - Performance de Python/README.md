@@ -8,11 +8,11 @@ Ce module explore différentes stratégies d'optimisation des performances en Py
 
 | Fichier | Description |
 |---|---|
-| `arbres_binomiaux.py` | Construction d'un arbre binomial (Cox-Ross-Rubinstein 1979) selon 6 approches : Python pur, NumPy vectorisé, Numba JIT, Cython (à venir), affichage graphique Matplotlib. Valorisation d'options européennes (Call/Put) par backward induction, comparaison avec Black-Scholes-Merton |
-| `recherche_nb_Pi.py` | Estimation du nombre π par la méthode de Monte Carlo. Visualisation des points aléatoires, version Python pur, version NumPy vectorisée, analyse de performance. |
-| `recherches_nb_premiers.py` | Test de primalité accéléré par Numba JIT pour illustrer les gains de performance sur des boucles Python. |
-| `simulation_monte_carlo_put_euro.py` | Pricing d'un put européen par simulation Monte Carlo de trajectoires de mouvement brownien géométrique (dynamique Black-Scholes). Comparaison : boucles Python vs NumPy vs Numba. |
-| `recherches_suite_fibonacci.py` | Calcul des nombres de Fibonacci selon trois approches : récursion naïve, récursion mémorisée (`lru_cache`) et méthode itérative, avec un générateur pour afficher la suite. |
+| `Arbres_binomiaux.py` | Construction d'un arbre binomial (Cox-Ross-Rubinstein 1979) selon 6 approches : Python pur, NumPy vectorisé, Numba JIT, Cython (à venir), affichage graphique Matplotlib. Valorisation d'options européennes (Call/Put) par backward induction, comparaison avec Black-Scholes-Merton |
+| `Recherche_nb_Pi.py` | Estimation du nombre π par la méthode de Monte Carlo. Visualisation des points aléatoires, version Python pur, version NumPy vectorisée, analyse de performance. |
+| `Recherches_nb_premiers.py` | Test de primalité accéléré par Numba JIT pour illustrer les gains de performance sur des boucles Python. |
+| `Simulation_monte_carlo_put_euro.py` | Pricing d'un put européen par simulation Monte Carlo de trajectoires de mouvement brownien géométrique (dynamique Black-Scholes). Comparaison : boucles Python vs NumPy vs Numba. |
+| `Recherches_suite_fibonacci.py` | Calcul des nombres de Fibonacci selon trois approches : récursion naïve, récursion mémorisée (`lru_cache`) et méthode itérative, avec un générateur pour afficher la suite. |
 
 ---
 
@@ -23,9 +23,6 @@ Ce module explore différentes stratégies d'optimisation des performances en Py
 - Affichage graphique de l'arbre
 - Valorisation d'options européennes (Call/Put) par backward induction
 - Comparaison avec Black-Scholes-Merton
-- Vérification de la parité Call-Put
-- Calcul des Greeks (Delta, Gamma, Theta)
-- Analyse de convergence du modèle binomial
 
 ### 2. Estimation de π (recherche_nb_Pi.py)
 - Méthode de Monte Carlo : points aléatoires dans un carré [-1,1]^2

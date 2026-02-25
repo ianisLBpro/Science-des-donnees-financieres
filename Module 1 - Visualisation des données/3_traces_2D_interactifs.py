@@ -5,6 +5,7 @@
 #
 #
 
+
 ### Importation des bibliothèques nécessaires ###
 import numpy as np                                                       # NumPy pour les calculs numériques
 import pandas as pd                                                      # Pandas pour la manipulation des données
@@ -30,7 +31,6 @@ df100 = df.apply(lambda x: (x / x.iloc[0])*100)                          # Mise 
 
 ### Calcul des rendements quotidiens ###
 # On calcule les rendements logarithmiques pour une meilleure précision et pour éviter les problèmes liés aux rendements négatifs
-# 2 manières de le faire :
 
 # returns = df.pct_change().dropna()                                     # Calcul des rendements quotidiens en %
 daily_returns = np.log(df/ df.shift(1)).dropna()                         # Calcul des rendements quotidiens log en %
@@ -90,7 +90,7 @@ df_ohlc = pd.DataFrame({                                                 # Créa
 }, index=df.index)                                                       # Index du DataFrame
 # Création de la figure candlestick #
 fig = go.Figure(layout=go.Layout(                                        # Layout personnalisé
-    title='Graphique en chandelier (candlestick) pour a',                       # Titre du graphique
+    title='Graphique en chandelier (candlestick) pour a',                # Titre du graphique
     xaxis_title='Date',                                                  # Titre de l'axe x
     yaxis_title='Prix'                                                   # Titre de l'axe y
 ))
