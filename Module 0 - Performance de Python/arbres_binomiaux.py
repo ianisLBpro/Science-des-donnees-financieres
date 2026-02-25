@@ -155,10 +155,10 @@ print(f"Temps d'exécution pour 500 périodes : {time.time() - t0:.5f} secondes"
 
 
 '''
-Exercice 4 : Variante de l'arbre binomial avec Cython (A venir)
+Exercice 4 : Variante de l'arbre binomial avec Cython (WIP - Necessite une image Docker)
 '''
 print("\n" + "="*70)
-print("Exercice 4 : CONSTRUCTION D'UN ARBRE BINOMIAL - CODE OPTIMISÉ AVEC CYTHON (A VENIR)")
+print("Exercice 4 : CONSTRUCTION D'UN ARBRE BINOMIAL - CODE OPTIMISÉ AVEC CYTHON (WIP - Necessite une image Docker)")
 print("="*70)
 
 

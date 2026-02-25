@@ -1,5 +1,9 @@
+#
+#
 # Nous voyons des manières de plus en plus efficaces de calculer les nombres de Fibonacci en Python
-
+#
+#
+#
 
 # Simple fonction récursive pour calculer le n-ième nombre de Fibonacci #
 def fib_rec_py1 (n):

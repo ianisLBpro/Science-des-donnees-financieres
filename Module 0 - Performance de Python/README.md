@@ -8,7 +8,7 @@ Ce module explore différentes stratégies d'optimisation des performances en Py
 
 | Fichier | Description |
 |---|---|
-| `Arbres_binomiaux.py` | Construction d'un arbre binomial (Cox-Ross-Rubinstein 1979) selon 6 approches : Python pur, NumPy vectorisé, Numba JIT, Cython (à venir), affichage graphique Matplotlib. Valorisation d'options européennes (Call/Put) par backward induction, comparaison avec Black-Scholes-Merton |
+| `Arbres_binomiaux.py` | Construction d'un arbre binomial (Cox-Ross-Rubinstein 1979) selon 6 approches : Python pur, NumPy vectorisé, Numba JIT, Cython (WIP - nécessite une image Docker), affichage graphique Matplotlib. Valorisation d'options européennes (Call/Put) par backward induction, comparaison avec Black-Scholes-Merton |
 | `Recherche_nb_Pi.py` | Estimation du nombre π par la méthode de Monte Carlo. Visualisation des points aléatoires, version Python pur, version NumPy vectorisée, analyse de performance. |
 | `Recherches_nb_premiers.py` | Test de primalité accéléré par Numba JIT pour illustrer les gains de performance sur des boucles Python. |
 | `Simulation_monte_carlo_put_euro.py` | Pricing d'un put européen par simulation Monte Carlo de trajectoires de mouvement brownien géométrique (dynamique Black-Scholes). Comparaison : boucles Python vs NumPy vs Numba. |

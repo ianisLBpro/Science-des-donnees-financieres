@@ -9,7 +9,7 @@ Ce module est dédié à la visualisation graphique des données financières au
 
 ## Description des fichiers
 
-### 1. `1_traces_2D_statiques.py`
+### 1. `1_Traces_2D_statiques.py`
 
 Tour complet des tracés 2D statiques avec Matplotlib :
 
@@ -34,7 +34,7 @@ Tour complet des tracés 2D statiques avec Matplotlib :
 | 17 | Boîte à moustaches pour deux jeux de données |
 | 18 | Tracé d'une fonction exponentielle avec intégrale |
 
-### 2. `2_traces_3D_statiques.py`
+### 2. `2_Traces_3D_statiques.py`
 
 Tracés 3D statiques avec Matplotlib (`mpl_toolkits.mplot3d`) :
 
@@ -43,7 +43,7 @@ Tracés 3D statiques avec Matplotlib (`mpl_toolkits.mplot3d`) :
 | 1 | Surface de volatilité implicite en 3D (strike × maturité) |
 | 2 | Nuage de points 3D avec les volatilités induites |
 
-### 3. `3_traces_2D_interactifs.py`
+### 3. `3_Traces_2D_interactifs.py`
 
 Tracés interactifs avec Plotly, exportés en fichiers HTML dans `Test_trace_2D_interactifs/` :
 
@@ -54,7 +54,20 @@ Tracés interactifs avec Plotly, exportés en fichiers HTML dans `Test_trace_2D_
 | 3 | Box plot des rendements quotidiens |
 | 4 | Graphique en chandelier (*candlestick*) |
 
-### 4. `4_financial_plots_2D_interactifs.ipynb`
+### 4. `4_Traces-2D_interactifs_TESTS.py`
+
+Tracés interactifs avancés avec Plotly pur (remplacement de cufflinks, incompatible avec plotly >= 6 et numpy >= 2), exportés en HTML dans `Test_trace_2D_interactifs/` :
+
+| Section | Tracé | Fichier |
+|---|---|---|
+| 1 | Tracé en ligne — toutes les colonnes | `ply_01.html` |
+| 1 | Tracé en ligne avec personnalisations (mode, symboles, couleurs) | `ply_02.html` |
+| 1 | Histogrammes par colonne (sous-graphiques) | `ply_03.html` |
+| 2 | Graphique OHLC — EUR/USD | `qf_01.html` |
+| 2 | OHLC + Bandes de Bollinger (SMA, upper/lower) | `qf_02.html` |
+| 2 | OHLC + Bandes de Bollinger + RSI (sous-graphiques) | `qf_03.html` |
+
+### 5. `Financial_plots_2D_interactifs.ipynb`
 
 Notebook Jupyter téléchargeant des données de marché réelles via `yfinance` et produisant des graphiques financiers interactifs, exportés en HTML dans `Financial_plot_2D_interactifs/` :
 

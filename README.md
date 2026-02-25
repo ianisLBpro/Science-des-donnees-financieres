@@ -7,7 +7,7 @@ Ce projet regroupe l'ensemble de mes travaux réalisés dans le cadre de l'étud
 | Catégorie | Librairies |
 |---|---|
 | Calcul scientifique | `numpy`, `scipy`, `pandas` |
-| Visualisation | `matplotlib`, `seaborn`, `plotly`, `cufflinks` |
+| Visualisation | `matplotlib`, `seaborn`, `plotly` |
 | Finance | `yfinance` |
 | Performance | `numba`, `llvmlite` |
 | Notebooks | `jupyter`, `ipykernel`, `ipywidgets` |
@@ -24,7 +24,7 @@ Ce module explore différentes stratégies d'optimisation des performances en Py
 
 | Fichier | Description |
 |---|---|
-| `Arbres_binomiaux.py` | Construction d'un arbre binomial (Cox-Ross-Rubinstein 1979) selon 6 approches : Python pur, NumPy vectorisé, Numba JIT, Cython (à venir), affichage graphique Matplotlib. Valorisation d'options européennes (Call/Put) par backward induction, comparaison avec Black-Scholes-Merton. |
+| `Arbres_binomiaux.py` | Construction d'un arbre binomial (Cox-Ross-Rubinstein 1979) selon 6 approches : Python pur, NumPy vectorisé, Numba JIT, Cython (WIP - nécessite une image Docker), affichage graphique Matplotlib. Valorisation d'options européennes (Call/Put) par backward induction, comparaison avec Black-Scholes-Merton. |
 | `Recherche_nb_pi.py` | Estimation du nombre π par la méthode de Monte Carlo. Visualisation des points aléatoires, version Python pur, version NumPy vectorisée, analyse de performance. |
 | `Recherches_nb_premiers.py` | Test de primalité accéléré par Numba JIT pour illustrer les gains de performance sur des boucles Python. |
 | `Simulation_monte_carlo_put_euro.py` | Pricing d'un put européen par simulation Monte Carlo de trajectoires de mouvement brownien géométrique (dynamique Black-Scholes). Comparaison : boucles Python vs NumPy vs Numba. |
@@ -40,8 +40,9 @@ Ce module est dédié à la visualisation graphique des données financières au
 |---|---|
 | `1_Traces_2D_statiques.py` | Tour complet des tracés 2D statiques avec Matplotlib : lignes, sommes cumulées, double axe Y, sous-tracés, scatter plots, histogrammes, boîtes à moustaches et intégrale sous une courbe avec annotations LaTeX. |
 | `2_Traces_3D_statiques.py` | Tracés 3D statiques : surface de volatilité implicite (strike × maturité) et nuage de points 3D avec angles de vue personnalisés. |
-| `3_Traces_2D_interactifs.py` | Tracés interactifs avec Plotly exportés en HTML : séries temporelles, histogrammes de rendements, boxplots et graphique en chandelier (candlestick) à partir de données OHLC simulées. |
-| `4_Financial_plots_2D_interactifs.ipynb` | Notebook Jupyter téléchargeant des données de marché réelles via `yfinance` et produisant des graphiques financiers interactifs Plotly : volatilité, donut/pie charts, jauge, chandelier, OHLC, lignes, et sous-tracés prix/volume. |
+| `3_Traces_2D_interactifs.py` | Tracés interactifs avec Plotly : séries temporelles, histogrammes de rendements, boxplots et graphique en chandelier (candlestick) à partir de données OHLC simulées. Exportés en HTML dans `Test_trace_2D_interactifs/`.|
+| `4_Traces-2D_interactifs_TESTS.py` | Tracés interactifs avancés avec Plotly pur : line plots personnalisés, histogrammes par colonne, OHLC, Bandes de Bollinger et RSI (avec sous-graphiques). Exportés en HTML dans `Test_trace_2D_interactifs/`. |
+| `Financial_plots_2D_interactifs.ipynb` | Notebook Jupyter téléchargeant des données de marché réelles via `yfinance` et produisant des graphiques financiers interactifs Plotly : volatilité, donut/pie charts, jauge, chandelier, OHLC, lignes, et sous-tracés prix/volume. |
 
 Les graphiques interactifs générés sont disponibles dans les dossiers `Financial_plot_2D_interactifs/` et `Test_trace_2D_interactifs/`.
 
@@ -53,8 +54,8 @@ Ce module est consacré à l'analyse des séries temporelles financières.
 
 | Fichier | Description |
 |---|---|
-| `Donnees_financieres.py` | *À venir* — Récupération et manipulation de données financières. |
-
+| `1_Donnees_financieres.py` | *À venir* — Récupération et manipulation de données financières. |
+| `2_Statistiques_mobiles.py` | *À venir* — . |
 ---
 
 ### Module 3 — Outils mathématiques

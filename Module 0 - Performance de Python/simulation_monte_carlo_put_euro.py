@@ -1,9 +1,17 @@
+#
+#
 # Simulation de Monte Carlo pour le prix d'une option européenne de type put sur un actif dont le prix suit une dynamique Black-Scholes.
+#
+#
+#
+
 
 import matplotlib.pyplot as plt
 import numba
 import numpy as np
 import math
+
+
 
 S0 = 36.
 T = 1.0
