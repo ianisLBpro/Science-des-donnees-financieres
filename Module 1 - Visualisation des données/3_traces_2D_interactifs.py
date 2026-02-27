@@ -63,7 +63,7 @@ for col in daily_returns.columns:                                        # Boucl
                       nbinsx=50,                                         # Nombre de bines
                       opacity=0.75)                                      # Ajout des histogrammes au graphique
 ### Sauvegarder dans un fichier HTML ###
-plot(fig, filename='./Module 1 - Visualisation des données/Test_trace_2D_interactifs/Histogramme_des_rendements_quotidiens.html', auto_open=True)                        # Sauvegarde et ouverture automatique
+plot(fig, filename='./Module 1 - Visualisation des données/Test_trace_2D_interactifs/Histogramme_des_rendements_quotidiens.html', auto_open=True)                     # Sauvegarde et ouverture automatique
 
 
 # Création d'une figure type boxplot avec Plotly ###
@@ -102,7 +102,7 @@ fig.add_candlestick(x=df_ohlc.index,                                     # Dates
                     close=df_ohlc['close'],                              # Données de fermeture
                     name='a')                                            # Ajout du candlestick au graphique
 ### Sauvegarder dans un fichier HTML ###
-plot(fig, filename='./Module 1 - Visualisation des données/Test_trace_2D_interactifs/Graphique_en_chandelier_candlestick.html', auto_open=True)                        # Sauvegarde et ouverture automatique
+plot(fig, filename='./Module 1 - Visualisation des données/Test_trace_2D_interactifs/Graphique_en_chandelier_candlestick.html', auto_open=True)                       # Sauvegarde et ouverture automatique
 
 
 

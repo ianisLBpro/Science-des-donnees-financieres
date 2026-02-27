@@ -1,5 +1,5 @@
 '''
-Recherche_nb_Pi.py
+Recherche_nb_pi.py
 
 L'algorithme pour ce projet s'inspire de celui de la simulation de Monte Carlo et va permettre de trouver une partie des décimales du nombre π.
 

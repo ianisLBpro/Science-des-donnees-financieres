@@ -14,7 +14,7 @@ from plotly.subplots import make_subplots
 
 
 # ============================================================
-# SECTION 1 : Basic Plots - Données pseudo-aléatoires
+# SECTION 1 : Tracés de base - Données pseudo-aléatoires
 # ============================================================
 
 # Génération des données
@@ -75,7 +75,7 @@ plyo.plot(fig3, filename='./Module 1 - Visualisation des données/Test_trace_2D_
 
 
 # =================================================================
-# SECTION 2 : Financial Plots - Données OHLC synthétiques (EUR/USD)
+# SECTION 2 : Tracé financier - Données OHLC synthétiques (EUR/USD)
 # =================================================================
 
 # Ici, on génère des données OHLC synthétiques
@@ -167,7 +167,7 @@ fig6.add_trace(go.Scatter(
     showlegend=False,
 ), row=1, col=1)
 fig6.add_trace(go.Scatter(
-    x=quotes.index, y=sma, mode='lines',                                # SMA — même cohérence que fig5
+    x=quotes.index, y=sma, mode='lines',                                # SMA pour les bandes de Bollinger
     name=f'SMA({bb_period})',
     line=dict(color='rgba(31,119,180,0.8)', width=1, dash='dash'),
     showlegend=False,
@@ -175,7 +175,7 @@ fig6.add_trace(go.Scatter(
 fig6.add_trace(go.Scatter(
     x=quotes.index, y=lower_band, mode='lines',
     name='BB inf.', line=dict(color='rgba(31,119,180,0.5)', width=1),
-    fill='tonexty', fillcolor='rgba(31,119,180,0.1)', showlegend=False, # Remplissage entre SMA et bande basse
+    fill='tonexty', fillcolor='rgba(31,119,180,0.1)', showlegend=False, # Remplissage entre SMA et BB inférieure
 ), row=1, col=1)
 
 # Sous-graphique 2 : RSI
