@@ -73,6 +73,7 @@ data.index.name = 'Date'
 
 
 
+
 '''
 Étape 1 : Inspection et statistiques descriptives
 
