@@ -90,6 +90,10 @@ plt.savefig('./Module 2 - Series temporelles financières/Figures_series_tempore
 plt.show()
 
 # Affichage graphique des rendements logarithmiques sous forme de scatter matrix
+# rets : jeu de données à visualiser 
+# alpha : paramètre alpha pour l'opacité des points 
+# diagonal : type de graphique à afficher sur la diagonale (ici des histogrammes)
+# hist_kwds : paramètres pour les histogrammes (ici le nombre de bins)
 pd.plotting.scatter_matrix(rets, alpha=0.2, diagonal='hist', hist_kwds={'bins': 35}, figsize=(10, 6))
 plt.suptitle('Scatter matrix des rendements logarithmiques du S&P 500 et du VIX')
 plt.tight_layout()
@@ -101,7 +105,8 @@ plt.show()
 
 '''
 Exercice 2 : Régression linéaire OLS et corrélation
-
+Une fois ces préparatifs effectués, nous pourrions trouver intérêt à lancer une analyse de régresssion linéaire OLS (Ordinary Least Squares). 
+Nous verrons sur le graphique suivant que la pente de la ligne de régression est négative prouvant l'existence de la corrélation négative entre les deux indices. 
 '''
 
 # Régression linéaire OLS (Ordinary Least Squares) entre les rendements logarithmiques du S&P 500 et du VIX
@@ -122,6 +127,12 @@ plt.show()
 
 '''
 Exercice 3 : Corrélation statique et corrélation glissante (rolling correlation)
+Pour conclure avec des mesures de corrélation directs. 
+La première mesure sera statique partant du jeu de données complet
+La seconde mesure sur mobile montrant la corrélation dans la limite d'une fenêtre temporelle. 
+
+Le graphique suivant nous montre que cette corrélation varie dans le temps, tout en restant, avec les même paramètres de calcul, négative.
+Cela reconfirme à nouveau notre hypothèse de corrélation négative entre les indices S&P 500 et VIX.
 '''
 
 # Calcul de la corrélation statique entre les rendements logarithmiques du S&P 500 et du VIX
