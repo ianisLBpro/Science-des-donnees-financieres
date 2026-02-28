@@ -107,7 +107,7 @@ Ce module aborde les méthodes statistiques appliquées à la finance et à la g
 
 ### Scripts Python
 ```bash
-python '.\Module X - Nom du module\<nom_du_script>.py'
+python '.\Module 'X' - Nom du module\<nom_du_script>.py'
 ```
 
 ### Notebooks Jupyter
