@@ -9,10 +9,13 @@ Ce projet regroupe l'ensemble de mes travaux réalisés dans le cadre de l'étud
 | Calcul scientifique | `numpy`, `scipy`, `pandas` |
 | Visualisation | `matplotlib`, `seaborn`, `plotly` |
 | Finance | `yfinance` |
-| Performance | `numba`, `llvmlite` |
+| Performance | `numba`, `llvmlite`, `Cython` (WIP) |
+| Big Data | `pyspark` |
 | Notebooks | `jupyter`, `ipykernel`, `ipywidgets` |
 
-> **Python 3.14** — Voir le fichier [INSTALLATION.md](INSTALLATION.md) pour la mise en place de l'environnement virtuel.
+> ⚠️ `cufflinks` est installé mais **incompatible avec `plotly >= 6` et `numpy >= 2`** — remplacé par Plotly pur dans tous les scripts.
+
+> **Python 3.14.0** — Voir le fichier [INSTALLATION.md](INSTALLATION.md) pour la mise en place de l'environnement virtuel.
 
 ---
 
@@ -55,7 +58,10 @@ Ce module est consacré à l'importation, l'analyse et la visualisation des sér
 | Fichier | Description |
 |---|---|
 | `1_Donnees_financieres.py` | Importation de 12 instruments financiers (actions, indices, ETF, taux de change, matières premières) via `yfinance` sur 2016–2026. **Étape 0** : téléchargement et mise en forme des données (MultiIndex `yfinance` → colonnes RIC). **Étape 1** : inspection et statistiques descriptives (`info`, `describe`, `aggregate`, `diff`, `pct_change`), tracé multiple en ligne et bar plot des rendements moyens. **Étape 2** : calcul des rendements logarithmiques vectorisés, évolution cumulative normalisée, rééchantillonnage hebdomadaire (`'W'`) et mensuel (`'ME'`). |
-| `2_Statistiques_mobiles.py` | *À venir* — Statistiques mobiles (moyennes mobiles, volatilité glissante, corrélations). |
+| `2_Statistiques_mobiles.py` | Statistiques et indicateurs mobiles sur l'action Apple (AAPL) avec fenêtre de 20 jours : min, mean, std, médiane, max et EWMA (`halflife=0.5`). Analyse technique par croisement de deux SMA (42 j et 252 j) avec génération d'un signal de position longue/courte (+1 / −1) tracé sur axe secondaire. |
+| `3_Analyse_de_correlation.py` | Analyse de la corrélation négative entre S&P 500 et VIX (2010–2018). **Exercice 1** : calcul des rendements logarithmiques, visualisation des grappes de volatilité et scatter matrix. **Exercice 2** : régression linéaire OLS (`np.polyfit`) — pente négative confirmant la corrélation inverse. **Exercice 3** : corrélation statique (`rets.corr()`) et corrélation glissante sur 252 jours. |
+| `4_Donnees_a_haute_frequence.py` | Données intraday EUR/USD à 1 minute via `yfinance`. Simulation Bid/Ask à partir du prix `Close` (demi-spread = 0.5 pip). Calcul du prix Mid et rééchantillonnage toutes les 5 minutes (`resample('5min').last()`). |
+
 ---
 
 ### Module 3 — Outils mathématiques

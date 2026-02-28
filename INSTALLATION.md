@@ -74,11 +74,14 @@ Cela installera tous les packages nécessaires avec les versions exactes :
 | `matplotlib` | Graphiques 2D/3D statiques |
 | `seaborn` | Graphiques statistiques |
 | `plotly` | Graphiques interactifs |
-| `cufflinks` | Lien Pandas ↔ Plotly |
+| `cufflinks` | ⚠️ Installé mais **incompatible avec plotly ≥ 6 et numpy ≥ 2** — remplacé par Plotly pur dans les scripts |
 | `scipy` | Calcul scientifique et statistiques |
 | `yfinance` | Données financières Yahoo Finance |
 | `numba` | Compilation JIT pour accélération Python |
 | `llvmlite` | Backend LLVM requis par Numba |
+| `Cython` | Compilation C pour accélération Python (Module 0 — WIP) |
+| `pyspark` | Big Data / traitement distribué (modules avancés) |
+| `openpyxl` | Lecture/écriture de fichiers Excel |
 | `requests` | Requêtes HTTP |
 | `beautifulsoup4` | Web scraping |
 | `ipykernel` | Noyau Jupyter pour notebooks |
