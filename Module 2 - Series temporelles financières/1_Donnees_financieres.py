@@ -55,8 +55,7 @@ print("=== Téléchargement des données via yfinance ===")
 yahoo_tickers = list(ric_to_yahoo.values())
 raw_yf = yf.download(yahoo_tickers, start=START, end=END, auto_adjust=True)
 
-# yfinance retourne un MultiIndex (Price, Ticker).
-# On prend la colonne 'Close' pour chaque ticker
+# yfinance retourne un MultiIndex (Price, Ticker) donc on prend la colonne 'Close' pour chaque ticker
 data = raw_yf['Close'].copy()
 
 # Renommer les colonnes Yahoo Finance
@@ -174,19 +173,19 @@ plt.tight_layout()
 plt.savefig('./Module 2 - Series temporelles financières/Figures_series_temporelles_financieres/fig_Evolution_cumulative_rendements_logarithmiques.png', dpi=150, bbox_inches='tight')
 plt.show()
 
-# Rééchantillonnage hebdomadaire (weekly) 
+# Rééchantillonnage hebdomadaire (weekly) #
 # EOD (End of Day) data rééchantillonnée en intervalles hebdomadaires
 # .last() → on garde la dernière valeur de chaque semaine
 print("\n=== Rééchantillonnage hebdomadaire ===")
 print(data.resample('W', label='right').last().head()) # label='right' → on prend la date de fin de semaine (évite le foresight bias)
 
-# Rééchantillonnage mensuel (monthly)
+# Rééchantillonnage mensuel (monthly) #
 # EOD (End of Day) data rééchantillonnée en intervalles mensuels
 # .last() → on garde la dernière valeur de chaque mois
 print("\n=== Rééchantillonnage mensuel ===")
 print(data.resample('ME', label='right').last().head()) # label='right' → on prend la date de fin de mois (évite le foresight bias)
 
-# Tracé de l'évolution cumulative des rendements logarithmiques rééchantillonnés mensuellement
+# Tracé de l'évolution cumulative des rendements logarithmiques rééchantillonnés mensuellement #
 # cumsum() sur les log returns → apply(np.exp) → rééchantillonnage mensuel → plot
 rets.cumsum().apply(np.exp).resample('ME', label='right').last().plot(figsize=(10, 6))
 plt.title('Évolution cumulative des rendements logarithmiques (rééchantillonnés mensuellement)')

@@ -18,6 +18,7 @@ plt.style.use('seaborn-v0_8')
 mpl.rcParams['font.family'] = 'serif'
 
 
+
 # =====================================================================================================
 # On réutilise les données financières téléchargées dans le module précédent (1_Donnees_financieres.py)
 # =====================================================================================================
@@ -51,8 +52,7 @@ print("=== Téléchargement des données via yfinance ===")
 yahoo_tickers = list(ric_to_yahoo.values())
 raw_yf = yf.download(yahoo_tickers, start=START, end=END, auto_adjust=True)
 
-# yfinance retourne un MultiIndex (Price, Ticker).
-# On prend la colonne 'Close' pour chaque ticker
+# yfinance retourne un MultiIndex (Price, Ticker) donc on prend la colonne 'Close' pour chaque ticker
 data = raw_yf['Close'].copy()
 
 # Renommer les colonnes Yahoo Finance
@@ -104,7 +104,8 @@ data['ewma'] = data[sym].ewm(halflife=0.5, min_periods=window).mean()
 print("\n=== data.dropna().head() ===")
 print(data.dropna().head())
 
-# Affichage graphique des statistiques mobiles pour les valeurs minimale, moyenne et maximale 
+# Affichage graphique des statistiques mobiles pour les valeurs minimale, moyenne et maximale #
+
 # Visualisation de trois des statistiques mobiles pour les 200 dernières lignes de données
 ax = data[['min', 'mean', 'max']].iloc[-200:].plot(figsize=(10, 6), style=['g--', 'r--', 'g--'], lw=0.8) 
 # Ajout au tracé les données de la série temporelle d'origine 
@@ -155,11 +156,13 @@ Dans l'exemple suivant nous allons faire correspondre une position longue à la 
 Le passage d'une position à l'autre correspond à un croisement des deux lignes des séries temporelles SMA. 
 '''
 
-# Affichage graphique du prix de l'action Apple et des deux moyennes mobiles simples (SMA1 et SMA2)
+# Affichage graphique du prix de l'action Apple et des deux moyennes mobiles simples (SMA1 et SMA2) #
+
 # Nous ne conserverons que les lignes de données complètes
 data.dropna(inplace=True)
 
-# Calcul des positions à adopter en fonction du croisement des deux SMA
+# Calcul des positions à adopter en fonction du croisement des deux SMA #
+
 # Si SMA court > SMA long → position longue (1), sinon → short (-1)
 data['positions'] = np.where(data['SMA1'] > data['SMA2'], 1, -1)
 ax = data[[sym, 'SMA1', 'SMA2', 'positions']].plot(figsize=(10, 6), secondary_y='positions')
