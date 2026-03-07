@@ -13,8 +13,6 @@ Ce projet regroupe l'ensemble de mes travaux réalisés dans le cadre de l'étud
 | Big Data | `pyspark` |
 | Notebooks | `jupyter`, `ipykernel`, `ipywidgets` |
 
-> ⚠️ `cufflinks` est installé mais **incompatible avec `plotly >= 6` et `numpy >= 2`** — remplacé par Plotly pur dans tous les scripts.
-
 > **Python 3.14.0** — Voir le fichier [INSTALLATION.md](INSTALLATION.md) pour la mise en place de l'environnement virtuel.
 
 ---
