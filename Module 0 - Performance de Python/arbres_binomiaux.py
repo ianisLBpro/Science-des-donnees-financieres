@@ -1,16 +1,21 @@
 '''
-arbres_binomiaux.py
+arbres_binomiaux
 
-Voyons ici comment construire un arbre binomial, une méthode très répandue pour l'évaluation des options définie par Cox, Ross et Rubinstein en 1979.
+Voyons ici comment construire un arbre binomial, 
+une méthode très répandue pour l'évaluation des options définie par Cox, Ross et Rubinstein en 1979.
 L'objectif est la représentation de l'évolution future d'une valeur au moyen d'un arbre recombinant (binomial). 
-Comme dans le modèle de Black-Scholes-Merton de 1973, il y a un actif risqué, qui est un indice ou une action, et un actif sans risque, une obligation. 
+
+Comme dans le modèle de Black-Scholes-Merton de 1973, il y a un actif risqué, 
+qui est un indice ou une action, et un actif sans risque, une obligation. 
 La plage temporelle entre aujourd'hui et la maturité de l'option est divisée en intervalles équidistants de longueur Δt.
 
-A partir d'un niveau d'indice au moment s de S(s), le niveau de l'indice au moment t = s + Δt sera S(t) = S(s) * m. 
+A partir d'un niveau d'indice au moment s de S_s, le niveau de l'indice au moment t = s + Δt sera S_t = S_s * m. 
 La valeur de m est choisie au hasard dans l'intervalle {u, d}, avec 0 < d < e^rΔt < u = e^σ√Δt, et u = 1/d. 
 Le taux court sans risque est r, et la volatilité de l'indice est σ.
 
-Nous allons montrer comment construire un arbre binomial de différentes manières, en utilisant des outils de plus en plus performants pour accélérer la construction de l'arbre.
+Nous allons montrer comment construire un arbre binomial de différentes manières, 
+en utilisant des outils de plus en plus performants pour accélérer la construction de l'arbre.
+
 Voici différentes manières de construire un arbre binomial : 
 - Exercice 1 : Formulation en Python pur de l'arbre binomial, fondée sur quelques paramètres numériques fixes du modèle.
 - Exercice 2 : Arbre binomial avec Numpy en utilisant du code totalement vectorisé
@@ -31,8 +36,10 @@ from scipy.stats import norm
 
 
 '''
-Exercice 1 : Formulation en Python pur de l'arbre binomial, fondée sur quelques paramètres numériques fixes du modèle. 
-Contrairement à ce qui se produit dans un tracé typique d'arbre, le mouvement croissant correspond dans l'objet ndarray à un déplacement latéral.
+Exercice 1 : Formulation en Python pur de l'arbre binomial, 
+fondée sur quelques paramètres numériques fixes du modèle. 
+Contrairement à ce qui se produit dans un tracé typique d'arbre, 
+le mouvement croissant correspond dans l'objet ndarray à un déplacement latéral.
 Cela fait diminuer la taille de ndarray, et rend plus facile la construction de l'arbre.
 '''
 
@@ -240,6 +247,7 @@ plot_tree(S)
 Exercice 6 : Valorisation d'options européennes et analyse par l'arbre binomial (En cours de rédaction)
 On utilise l'arbre binomial de Cox-Ross-Rubinstein pour valoriser des options européennes Call et Put,
 puis on vérifie la cohérence du modèle par benchmark avec la formule fermée de Black-Scholes-Merton.
+
 - Valorisation par backward induction en probabilité risque-neutre
 - Comparaison avec la formule fermée de Black-Scholes-Merton
 '''

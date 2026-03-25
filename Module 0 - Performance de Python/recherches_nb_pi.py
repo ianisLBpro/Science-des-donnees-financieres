@@ -1,17 +1,21 @@
 '''
-Recherche_nb_pi.py
+Recherche_nb_pi 
 
-L'algorithme pour ce projet s'inspire de celui de la simulation de Monte Carlo et va permettre de trouver une partie des décimales du nombre π.
+L'algorithme pour ce projet s'inspire de celui de la simulation de Monte Carlo 
+et va permettre de trouver une partie des décimales du nombre π.
 
-Nous savons que la superficie, c'est à dire l'aire "A" d'un cercle est obtenur par la formule A = π * r^2. 
+Nous savons que la superficie, c'est à dire l'aire "A" d'un cercle est obtenue par la formule A = π * r^2. 
 En conséquence, π = A / r^2. Pour un cercle de rayon r = 1, Pi est donc égal à A. 
 
-Notre algorithme va simuler la mise en place de points au hasard avec les coordonnées x, y, sachant que x et y font partie de l'intervalle [-1, 1].
+Notre algorithme va simuler la mise en place de points au hasard avec les coordonnées x, y, 
+sachant que x et y font partie de l'intervalle [-1, 1].
 Le carré autour d'un cercle inscrit a donc une longueur de côté de 2, donc une aire de 4. 
 
 L'aire du cercle inscrit est donc inférieure à cette valeur, et nous permet de l'estimer par une méthode de Monte Carlo. 
 
-L'algorithme va générer un nombre de points aléatoires dans le carré, et compter le nombre de points qui tombent à l'intérieur du cercle.
+L'algorithme va générer un nombre de points aléatoires dans le carré, 
+et compter le nombre de points qui tombent à l'intérieur du cercle.
+
 Puis nous diviserons le nombre de points dans le cercle par le nombre total de points. 
 '''
 
@@ -24,12 +28,10 @@ import numba
 import time
 
 
-# Configuration de l'affichage des graphiques
 plt.style.use('seaborn-v0_8')
 mpl.rcParams['font.family'] = 'serif'
 
 print(f'\nValeur réelle de π : {np.pi:.5f}')
-
 
 
 
