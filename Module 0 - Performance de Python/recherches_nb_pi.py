@@ -20,13 +20,11 @@ Puis nous diviserons le nombre de points dans le cercle par le nombre total de p
 '''
 
 
-
 import random  
 import numpy as np
 from pylab import mpl, plt
 import numba
 import time
-
 
 plt.style.use('seaborn-v0_8')
 mpl.rcParams['font.family'] = 'serif'

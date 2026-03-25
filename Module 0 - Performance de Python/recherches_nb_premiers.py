@@ -21,7 +21,7 @@ import numba
 
 
 
-# Recherche de nombres premiers en Python #
+# Fonction pour tester si un nombre est premier #
 def is_prime(nb):
     if nb < 2: return False
     if nb == 2: return True
@@ -34,6 +34,12 @@ def is_prime(nb):
 is_prime_nb = numba.jit(is_prime)
 is_prime_nb(2)
 
+
+
+
+'''
+Exercice 1 : Testez si un nombre est premier en Python et en Numba.
+'''
 nb = int(input('Quel nombre voulez-vous tester pour savoir s\'il est premier ? '))
 
 print('Recherche si le nombre est premier en Python :')
@@ -48,6 +54,12 @@ print(nb)
 print(is_prime_nb(nb))
 print(f"Numba : {time.time() - start:.6f} s\n")
 
+
+
+
+'''
+Exercice 2 : Affichez les n premiers nombres premiers en Python et en Numba.
+'''
 nb_2 = int(input('Combien de nombres premiers voulez-vous afficher ? '))
 
 print('\n Affichage des nombres premiers en Python :')

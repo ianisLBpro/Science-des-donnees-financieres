@@ -64,6 +64,7 @@ I = 50000      # Nombre de trajectoires simulées
 K = 40         # Prix d'exercice (strike)
 
 
+
 # Méthode 1 : Python  #
 def mcs_simulation_py(p):
     M, I = p
@@ -92,6 +93,7 @@ print(f'Prix du put européen (Monte Carlo) :                        {C0:.4f}')
 print(f'Temps de simulation : {elapsed:.4f} s\n')
 
 
+
 # Méthode 2 : NumPy vectorisé #
 def mcs_simulation_np(p):
     M, I = p
@@ -116,6 +118,7 @@ print(f'Prix du put européen (Monte Carlo) :   {C0:.4f}')
 print(f'Temps de simulation : {elapsed:.4f} s\n')
 
 
+
 # Méthode 3 : Numba JIT #
 mcs_simulation_nb = numba.jit(mcs_simulation_py)
 mcs_simulation_nb((10, 10))  # Pré-compilation JIT (hors mesure)
@@ -129,6 +132,7 @@ C0 = math.exp(-r * T) * np.maximum(K - S[-1], 0).mean()
 print(f'Prix moyen du sous-jacent à maturité : {S[-1].mean():.4f}')
 print(f'Prix du put européen (Monte Carlo) :   {C0:.4f}')
 print(f'Temps de simulation : {elapsed:.4f} s\n')
+
 
 
 # Graphique #

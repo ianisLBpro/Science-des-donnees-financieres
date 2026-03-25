@@ -29,6 +29,7 @@ print(f'Le {n}ème nombre de Fibonacci est {result}')
 print(f'Temps : {time.time() - start:.6f} s\n')
 
 
+
 # Fonction récursive mémorisée pour calculer le n-ième nombre de Fibonacci #
 from functools import lru_cache as cache
 @cache(maxsize=None)
@@ -44,6 +45,7 @@ start = time.time()
 result = fib_rec_py2(n)
 print(f'Le {n}ème nombre de Fibonacci est {result}')
 print(f'Temps : {time.time() - start:.6f} s\n')
+
 
 
 # Fonction itérative pour calculer le n-ième nombre de Fibonacci #
